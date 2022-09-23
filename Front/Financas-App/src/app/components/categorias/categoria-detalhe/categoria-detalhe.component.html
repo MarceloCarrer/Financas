@@ -1,0 +1,46 @@
+<div class="card border-dark rounded shadow-sm p-3">
+  <form [formGroup]="form">
+    <div class="mb-4">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Nome</label>
+          <input type="text" class="text-capitalize form-control is-invalid"
+          [ngClass]="{'is-invalid': property.nome.errors && property.nome.touched}"
+          formControlName="nome" placeholder="Nome">
+          <div *ngIf="property.nome.errors?.required" class="invalid-feedback">
+            Nome é obrigatório.
+          </div>
+          <div *ngIf="property.nome.errors?.minlength" class="invalid-feedback">
+            Mínimo de 3 caracteres.
+          </div>
+          <div *ngIf="property.nome.errors?.maxlength" class="invalid-feedback">
+            Máximo de 50 caracteres.
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Data</label>
+          <input type="datetime" class="form-control is-invalid"
+          bsDatepicker [bsConfig]="bsConfig"
+          value="{{categoria.dataCadastro | DateTimeFormat}}"
+          [ngClass]="{'is-invalid': property.dataCadastro.errors && property.dataCadastro.touched}"
+          formControlName="dataCadastro" placeholder="Data">
+          <div class="invalid-feedback">
+            Data é obrigatório.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card border-dark rounded shadow-sm p-3">
+      <div class="row">
+        <div class="d-flex">
+          <button class="btn btn-outline-secondary border" (click)="resetForm()">
+            Cancelar Alteração
+          </button>
+          <button class="btn btn-primary ms-auto" [disabled]="!form.valid" (click)="salvarAlteracao()">
+            Salvar Alteração
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

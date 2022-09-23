@@ -1,0 +1,87 @@
+<div class="card border-dark rounded shadow-sm p-3">
+  <form [formGroup]="form">
+    <div class="mb-4">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Estabelecimento</label>
+          <input type="text" class="text-capitalize form-control is-invalid"
+          [ngClass]="{'is-invalid': property.local.errors && property.local.touched}"
+          formControlName="local" placeholder="Estabelecimento">
+          <div *ngIf="property.local.errors?.required" class="invalid-feedback">
+            Estabelecimento é obrigatório.
+          </div>
+          <div *ngIf="property.local.errors?.minlength" class="invalid-feedback">
+            Mínimo de 3 caracteres.
+          </div>
+          <div *ngIf="property.local.errors?.maxlength" class="invalid-feedback">
+            Máximo de 50 caracteres.
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-3">
+          <label>Categoria</label>
+          <select class="form-select text-capitalize" formControlName="categoriaId"
+          [ngClass]="{'is-invalid': property.categoriaId.errors && property.categoriaId.touched}">
+            <option value="">Selecione...</option>
+            <option *ngFor="let categoria of categorias" [value]="categoria.id">{{categoria.nome}}</option>
+          </select>
+          <div class="invalid-feedback">
+            Categoria é obrigatório.
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Outro</label>
+          <input type="text" class="text-capitalize form-control is-invalid"
+          [ngClass]="{'is-invalid': property.outro.errors && property.outro.touched}"
+          formControlName="outro" placeholder="Outro">
+          <div *ngIf="property.outro.errors?.minlength" class="invalid-feedback">
+            Mínimo de 3 caracteres.
+          </div>
+          <div *ngIf="property.outro.errors?.maxlength" class="invalid-feedback">
+            Máximo de 50 caracteres.
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Data Compra</label>
+          <input type="datetime" class="form-control is-invalid"
+          bsDatepicker [bsConfig]="bsConfig" [bsValue]="bsValue"
+          value="{{gasto.dataCompra | DateTimeFormat}}"
+          [ngClass]="{'is-invalid': property.dataCompra.errors && property.dataCompra.touched}"
+          formControlName="dataCompra" placeholder="Data">
+          <div class="invalid-feedback">
+            Data é obrigatório.
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Valor</label>
+          <input type="text" class="form-control is-invalid"
+          [ngClass]="{'is-invalid': property.valor.errors && property.valor.touched}"
+          currencyMask
+          formControlName="valor" placeholder="Valor">
+          <div *ngIf="property.valor.errors?.required" class="invalid-feedback">
+            Valor é obrigatório.
+          </div>
+          <div *ngIf="property.valor.errors?.min" class="invalid-feedback">
+            Valor mínimo R$ 0,01.
+          </div>
+          <div *ngIf="property.valor.errors?.max" class="invalid-feedback">
+            Valor máximo R$ 1.000.000,00.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card border-dark rounded shadow-sm p-3">
+      <div class="row">
+        <div class="d-flex">
+          <button class="btn btn-outline-secondary border" (click)="resetForm()">
+            Cancelar Alteração
+          </button>
+          <button class="btn btn-primary ms-auto" [disabled]="!form.valid" (click)="salvarAlteracao()">
+            Salvar Alteração
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

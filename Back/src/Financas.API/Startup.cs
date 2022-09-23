@@ -1,16 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Financas.Application;
+using Financas.Application.Contracts;
+using Financas.Persistence;
+using Financas.Persistence.Context;
+using Financas.Persistence.Contract;
+using Financas.Repository.Contract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using AutoMapper;
+using System;
 
 namespace Financas.API
 {
@@ -27,7 +29,25 @@ namespace Financas.API
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+            services.AddDbContext<DataContext>(
+                context => context.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            services.AddControllers()
+                    .AddNewtonsoftJson(x => x.SerializerSettings.ReferenceLoopHandling =
+                        Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+            
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<ICategoriaPersistence, CategoriaPersistence>();
+            services.AddScoped<IGastoService, GastoService>();
+            services.AddScoped<IGastoPersistence, GastoPersistence>();
+            services.AddScoped<IParceladoService, ParceladoService>();
+            services.AddScoped<IParceladoPersistence, ParceladoPersistence>();
+            services.AddScoped<IGeralPersistence, GeralPersistence>();
+
+
+            services.AddCors();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Financas.API", Version = "v1" });
@@ -49,6 +69,12 @@ namespace Financas.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(
+                x => x.AllowAnyHeader()
+                      .AllowAnyMethod()
+                      .AllowAnyOrigin()
+            );
 
             app.UseEndpoints(endpoints =>
             {

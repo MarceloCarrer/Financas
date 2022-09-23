@@ -1,0 +1,20 @@
+// FRONT \\
+npm install -g @angular/cli
+npm install bootstrap@5.2.0
+npm install --save @fortawesome/mpfontawesome-free
+npm install ngx-bootstrap --save
+npm install ngx-toastr --save
+npm install @angular/animations --save
+npm install ngx-spinner --save
+npm install bootswatch
+npm install ngx-currency --save
+
+
+
+// MIGRATIONS \\
+-- Financas/back/src --
+dotnet ef migrations add Initial -p Financas.Persistence -s Financas.API
+dotnet ef database update -s Financas.API
+
+// CRIAÇÃO COMPONENTS \\
+ng g c components/categorias/categoria-detalhe --module app
