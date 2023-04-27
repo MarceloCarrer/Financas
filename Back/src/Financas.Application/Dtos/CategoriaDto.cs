@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Financas.Application.Dtos
 {
@@ -16,7 +14,7 @@ namespace Financas.Application.Dtos
         public string Nome { get; set; }        
         
         [Required(ErrorMessage = "{0} é obrigatório.")]
-        public string DataCadastro { get; set; }
+        public DateTime DataCadastro { get; set; }
 
         public IEnumerable<GastoDto> Gastos { get; set; }
 

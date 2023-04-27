@@ -22,7 +22,7 @@ export class TituloComponent implements OnInit {
   }
 
   public return(): void {
-    this.router.navigate([`/${this.subRota.toLocaleLowerCase()}`])
+    this.router.navigate([`/${this.subRota}`])
   }
 
 }

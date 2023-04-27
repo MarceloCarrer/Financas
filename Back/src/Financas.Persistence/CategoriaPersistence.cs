@@ -16,7 +16,6 @@ namespace Financas.Persistence
             _context = context;
         }
 
-        //CATEGORIAS
         public async Task<Categoria[]> GetAllCategoriasAsync()
         {
             IQueryable<Categoria> query = _context.Categorias

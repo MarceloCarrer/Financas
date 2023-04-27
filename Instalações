@@ -18,3 +18,4 @@ dotnet ef database update -s Financas.API
 
 // CRIAÇÃO COMPONENTS \\
 ng g c components/categorias/categoria-detalhe --module app
+ng g c components/estabelecimentos/estabelecimento-detalhe --module app 

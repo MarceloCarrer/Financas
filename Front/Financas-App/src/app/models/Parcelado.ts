@@ -7,6 +7,7 @@ export interface Parcelado {
   valor: number;
   qtdParcela: number;
   dataCompra: Date;
+  dataVencimento: Date;
   ativo: boolean;
   categoriaId: number;
   categorias: Categoria;

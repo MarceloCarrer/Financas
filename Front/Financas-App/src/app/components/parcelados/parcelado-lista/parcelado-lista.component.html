@@ -29,21 +29,25 @@
     <tbody *ngIf="parcelados && parcelados.length">
       <tr *ngFor="let parcelado of parceladosFiltradas" (click)="detalheParcelado(parcelado.id)" style="cursor: pointer;">
         <td class="text-capitalize">{{parcelado.nome}}</td>
-        <td>{{parcelado.categorias.nome}}</td>
+        <td class="text-capitalize">{{parcelado.categorias.nome}}</td>
         <td>{{parcelado.valor | currency:'BRL'}}</td>
         <td>{{parcelado.qtdParcela}}</td>
-        <td>{{parcelado.dataCompra}}</td>
-        <td >{{parcelado.ativo ? 'Sim' : 'Não'}}</td>
+        <td>{{parcelado.dataCompra | DateTimeFormat}}</td>
+        <td>{{parcelado.ativo ? 'Sim' : 'Não'}}</td>
         <td>
           <button type="button" class="btn btn-danger btn-sm" (click)="openModal($event, template, parcelado.id, parcelado.nome, parcelado.valor)">
             <i class="fa fa-trash"></i>
+          </button>
+          <button type="button" class="btn btn-primary btn-sm ms-3"
+          (click)="openParcela($event, templateParcela, parcelado.id, parcelado.nome, parcelado.valor, parcelado.qtdParcela)">
+            <i class="fa fa-clone"></i>
           </button>
         </td>
       </tr>
     </tbody>
     <tfoot *ngIf="!parcelados.length">
       <tr>
-        <td colspan="5" class="text-center">
+        <td colspan="7" class="text-center">
           <h4>Nenhum Registro Encontrado.</h4>
         </td>
       </tr>
@@ -56,5 +60,43 @@
     <p>Confirma a exclusão da compra {{this.nome }} no valor de {{this.valor | currency:'BRL'}}?</p>
     <button type="button" class="btn btn-primary me-2" (click)="confirm()" >Sim</button>
     <button type="button" class="btn btn-danger" (click)="decline()" >Não</button>
+  </div>
+</ng-template>
+
+<ng-template #templateParcela>
+  <div class="modal-header">
+    <h4 class="text-capitalize modal-title pull-left"> {{this.nome}} - {{this.valor | currency:'BRL'}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Numero Parcela</th>
+          <th>Valor Parcela</th>
+          <th>Data Vencimento</th>
+          <th>Data Pagamento</th>
+          <th>Pago</th>
+        </tr>
+      </thead>
+      <tbody *ngIf="parcelados && parcelados.length">
+        <tr *ngFor="let parcela of parcelas" style="cursor: pointer;">
+          <td>{{parcela.numeroParcela}}</td>
+          <td>{{this.valorParcela | currency:'BRL'}}</td>
+          <td>{{parcela.dataVencimento | DateTimeFormat}}</td>
+          <td>{{parcela.dataPagamento | DateTimeFormat}}</td>
+          <td>{{parcela.pago ? 'Sim' : 'Não'}}</td>
+        </tr>
+      </tbody>
+      <tfoot *ngIf="!parcelados.length">
+        <tr>
+          <td colspan="5" class="text-center">
+            <h4>Nenhuma Parcela Encontrada!</h4>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </ng-template>

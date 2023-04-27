@@ -44,9 +44,8 @@
         </div>
         <div class="form-group col-md-3">
           <label>Data Compra</label>
-          <input type="datetime" class="form-control is-invalid"
-          bsDatepicker [bsConfig]="bsConfig" [bsValue]="bsValue"
-          value="{{gasto.dataCompra | DateTimeFormat}}"
+          <input type="datetime-local" class="form-control is-invalid"
+          value="{{gasto.dataCompra}}"
           [ngClass]="{'is-invalid': property.dataCompra.errors && property.dataCompra.touched}"
           formControlName="dataCompra" placeholder="Data">
           <div class="invalid-feedback">

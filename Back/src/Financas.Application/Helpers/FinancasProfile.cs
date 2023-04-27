@@ -8,9 +8,12 @@ namespace Financas.Application.Helpers
     {
         public FinancasProfile()
         {
-            CreateMap<Gasto, GastoDto>().ReverseMap();
             CreateMap<Categoria, CategoriaDto>().ReverseMap();
+            CreateMap<FormaPagamento, FormaPagamentoDto>().ReverseMap();
+            CreateMap<Estabelecimento, EstabelecimentoDto>().ReverseMap();
+            CreateMap<Gasto, GastoDto>().ReverseMap();
             CreateMap<Parcelado, ParceladoDto>().ReverseMap();
+            CreateMap<Parcela, ParcelaDto>().ReverseMap();
         }
     }
 }

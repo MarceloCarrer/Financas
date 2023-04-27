@@ -40,10 +40,16 @@ namespace Financas.API
 
             services.AddScoped<ICategoriaService, CategoriaService>();
             services.AddScoped<ICategoriaPersistence, CategoriaPersistence>();
+            services.AddScoped<IFormaPagamentoService, FormaPagamentoService>();
+            services.AddScoped<IFormaPagamentoPersistence, FormaPagamentoPersistence>();
+            services.AddScoped<IEstabelecimentoService, EstabelecimentoService>();
+            services.AddScoped<IEstabelecimentoPersistence, EstabelecimentoPersistence>();            
             services.AddScoped<IGastoService, GastoService>();
             services.AddScoped<IGastoPersistence, GastoPersistence>();
             services.AddScoped<IParceladoService, ParceladoService>();
             services.AddScoped<IParceladoPersistence, ParceladoPersistence>();
+            services.AddScoped<IParcelaService, ParcelaService>();
+            services.AddScoped<IParcelaPersistence, ParcelaPersistence>();
             services.AddScoped<IGeralPersistence, GeralPersistence>();
 
 

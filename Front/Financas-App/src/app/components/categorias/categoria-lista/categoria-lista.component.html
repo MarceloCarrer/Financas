@@ -25,7 +25,7 @@
     <tbody *ngIf="categorias && categorias.length">
       <tr *ngFor="let categoria of categoriasFiltradas" (click)="detalheCategoria(categoria.id)" style="cursor: pointer;">
         <td class="text-capitalize">{{categoria.nome}}</td>
-        <td>{{categoria.dataCadastro}}</td>
+        <td>{{categoria.dataCadastro | DateTimeFormat}}</td>
         <td>
           <button type="button" class="btn btn-danger btn-sm" (click)="openModal($event, template, categoria.id, categoria.nome)">
             <i class="fa fa-trash"></i>

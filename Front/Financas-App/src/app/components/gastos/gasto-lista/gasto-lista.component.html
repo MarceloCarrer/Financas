@@ -29,7 +29,7 @@
         <td class="text-capitalize">{{gasto.local}}</td>
         <td class="text-capitalize">{{gasto.categorias.nome}}</td>
         <td>{{gasto.valor | currency:'BRL'}}</td>
-        <td>{{gasto.dataCompra}}</td>
+        <td>{{gasto.dataCompra | DateTimeFormat}}</td>
         <td>
           <button type="button" class="btn btn-danger btn-sm" (click)="openModal($event, template, gasto.id, gasto.local, gasto.valor)">
             <i class="fa fa-trash"></i>

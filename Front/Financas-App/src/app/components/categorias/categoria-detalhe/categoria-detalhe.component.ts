@@ -48,7 +48,7 @@ export class CategoriaDetalheComponent implements OnInit {
       }
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
       this.carregarCategotia();
       this.validation();
     }

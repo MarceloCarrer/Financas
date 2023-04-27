@@ -1,5 +1,4 @@
-﻿using Financas.Domain;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Financas.Application.Contracts;
 using System.Threading.Tasks;
 using System;
@@ -33,7 +32,7 @@ namespace Financas.API.Controllers
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, 
-                                       $"Erro ao tentar recuperar categorias. Erro: {ex.Message}");
+                                       $"Erro ao tentar recuperar registros. Erro: {ex.Message}");
             }
         }
 
@@ -52,7 +51,7 @@ namespace Financas.API.Controllers
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, 
-                                       $"Erro ao tentar recuperar categorias. Erro: {ex.Message}");
+                                       $"Erro ao tentar recuperar registro. Erro: {ex.Message}");
             }
         }
 
@@ -71,7 +70,7 @@ namespace Financas.API.Controllers
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, 
-                                       $"Erro ao tentar recuperar categorias. Erro: {ex.Message}");
+                                       $"Erro ao tentar recuperar registros. Erro: {ex.Message}");
             }
         }
 
@@ -90,7 +89,7 @@ namespace Financas.API.Controllers
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, 
-                                       $"Erro ao tentar adicionar categorias. Erro: {ex.Message}");
+                                       $"Erro ao tentar adicionar registro. Erro: {ex.Message}");
             } 
         }
 
@@ -109,7 +108,7 @@ namespace Financas.API.Controllers
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, 
-                                       $"Erro ao tentar atualizar categorias. Erro: {ex.Message}");
+                                       $"Erro ao tentar atualizar registro. Erro: {ex.Message}");
             } 
         }
 
@@ -131,14 +130,14 @@ namespace Financas.API.Controllers
                 }
                 else
                 {                    
-                    throw new Exception("Erro ao tentar deletar categorias.");
+                    throw new Exception("Erro ao tentar deletar registro.");
                 }
                 
             }
             catch (Exception ex)
             {
                 return this.StatusCode(StatusCodes.Status500InternalServerError, 
-                                       $"Erro ao tentar deletar categorias. Erro: {ex.Message}");
+                                       $"Erro ao tentar deletar registro. Erro: {ex.Message}");
             } 
         }
     }

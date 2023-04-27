@@ -3,9 +3,8 @@ import { Injectable } from '@angular/core';
 import { Parcelado } from '@app/models/Parcelado';
 import { Observable, take } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
+
 export class ParceladoService {
 
   baseURL = 'https://localhost:5001/api/parcelado'

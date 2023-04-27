@@ -5,10 +5,8 @@ namespace Financas.Persistence.Contract
 {
     public interface IParcelaPersistence
     {
-        //PARCELAS
-        Task<Parcela[]> GetAllParcelasAsync();
-        Task<Parcela[]> GetAllParcelasByParceladosAsync(Parcelado ParceladoId);
-        Task<Parcela> GetParcelasByIdAsync(int id);
+        Task<Parcela[]> GetAllParcelasByParceladoIdAsync(int parceladoId);
+        Task<Parcela> GetParcelaByIdsAsync(int parceladoId, int parcelaId);
     }
 
 }

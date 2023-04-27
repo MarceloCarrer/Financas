@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Financas.Application.Dtos
@@ -18,16 +17,26 @@ namespace Financas.Application.Dtos
         public decimal Valor { get; set; }
 
         [Required(ErrorMessage = "{0} é obrigatório.")]
-        public string DataCompra { get; set; }
+        public DateTime DataCompra { get; set; }
 
         [Required(ErrorMessage = "{0} é obrigatório.")]
         public int CategoriaId { get; set; }
 
         public CategoriaDto Categorias { get; set; }
 
-        #nullable enable        
+        [Required(ErrorMessage = "{0} é obrigatório.")]
+        public int FormaPagamentoId { get; set; }
+
+        public FormaPagamentoDto FormaPagamentos { get; set; }
+
+        [Required(ErrorMessage = "{0} é obrigatório.")]
+        public int EstabelecimentoId { get; set; }
+
+        public EstabelecimentoDto Estabelecimentos { get; set; }
+        
+        #nullable enable
         [MaxLength(50, ErrorMessage = "Máximo de 50 caracteres.")]
-        public string? Outro { get; set; }       
+        public string? Outro { get; set; }
         #nullable disable
     }
 }

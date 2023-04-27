@@ -7,6 +7,14 @@ import { CategoriasComponent } from './components/categorias/categorias.componen
 import { CategoriaDetalheComponent } from './components/categorias/categoria-detalhe/categoria-detalhe.component';
 import { CategoriaListaComponent } from './components/categorias/categoria-lista/categoria-lista.component';
 
+import { FormasPagamentoComponent } from './components/formas-pagamento/formas-pagamento.component';
+import { FormaPagamentoDetalheComponent } from './components/formas-pagamento/forma-pagamento-detalhe/forma-pagamento-detalhe.component';
+import { FormaPagamentoListaComponent } from './components/formas-pagamento/forma-pagamento-lista/forma-pagamento-lista.component';
+
+import { EstabelecimentosComponent } from './components/estabelecimentos/estabelecimentos.component';
+import { EstabelecimentoDetalheComponent } from './components/estabelecimentos/estabelecimento-detalhe/estabelecimento-detalhe.component';
+import { EstabelecimentoListaComponent } from './components/estabelecimentos/estabelecimento-lista/estabelecimento-lista.component';
+
 import { GastosComponent } from './components/gastos/gastos.component';
 import { GastoDetalheComponent } from './components/gastos/gasto-detalhe/gasto-detalhe.component';
 import { GastoListaComponent } from './components/gastos/gasto-lista/gasto-lista.component';
@@ -62,6 +70,26 @@ const routes: Routes = [
       { path: 'detalhe/:id', component: CategoriaDetalheComponent },
       { path: 'detalhe', component: CategoriaDetalheComponent },
       { path: 'lista', component: CategoriaListaComponent },
+    ]
+  },
+
+  { path: 'formaPagamento', redirectTo: 'formaPagamento/lista' },
+  {
+    path: 'formaPagamento', component: FormasPagamentoComponent,
+    children: [
+      { path: 'detalhe/:id', component: FormaPagamentoDetalheComponent },
+      { path: 'detalhe', component: FormaPagamentoDetalheComponent },
+      { path: 'lista', component: FormaPagamentoListaComponent },
+    ]
+  },
+
+  { path: 'estabelecimento', redirectTo: 'estabelecimento/lista' },
+  {
+    path: 'estabelecimento', component: EstabelecimentosComponent,
+    children: [
+      { path: 'detalhe/:id', component: EstabelecimentoDetalheComponent },
+      { path: 'detalhe', component: EstabelecimentoDetalheComponent },
+      { path: 'lista', component: EstabelecimentoListaComponent },
     ]
   },
 

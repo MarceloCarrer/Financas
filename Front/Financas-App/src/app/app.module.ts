@@ -23,6 +23,14 @@ import { GastosComponent } from './components/gastos/gastos.component';
 import { GastoListaComponent } from './components/gastos/gasto-lista/gasto-lista.component';
 import { GastoDetalheComponent } from './components/gastos/gasto-detalhe/gasto-detalhe.component';
 
+import { FormasPagamentoComponent } from './components/formas-pagamento/formas-pagamento.component';
+import { FormaPagamentoListaComponent } from './components/formas-pagamento/forma-pagamento-lista/forma-pagamento-lista.component';
+import { FormaPagamentoDetalheComponent } from './components/formas-pagamento/forma-pagamento-detalhe/forma-pagamento-detalhe.component';
+
+import { EstabelecimentosComponent } from './components/estabelecimentos/estabelecimentos.component';
+import { EstabelecimentoListaComponent } from './components/estabelecimentos/estabelecimento-lista/estabelecimento-lista.component';
+import { EstabelecimentoDetalheComponent } from './components/estabelecimentos/estabelecimento-detalhe/estabelecimento-detalhe.component';
+
 import { ParceladosComponent } from './components/parcelados/parcelados.component';
 import { ParceladoListaComponent } from './components/parcelados/parcelado-lista/parcelado-lista.component';
 import { ParceladoDetalheComponent } from './components/parcelados/parcelado-detalhe/parcelado-detalhe.component';
@@ -41,6 +49,9 @@ import { RegistrationComponent } from './components/user/registration/registrati
 import { CategoriaService } from './services/categoria.service';
 import { GastoService } from './services/gasto.service';
 import { ParceladoService } from './services/parcelado.service';
+import { ParcelaService } from './services/parcela.service';
+import { FormaPagamentoService } from './services/formaPagamento.service';
+import { EstabelecimentoService } from './services/estabelecimento.service';
 
 import { DateTimeFormatPipe } from './helpers/DateTimeFormat.pipe';
 
@@ -72,7 +83,13 @@ registerLocaleData(localePt, 'pt');
     CategoriaDetalheComponent,
     CategoriaListaComponent,
     ParceladoListaComponent,
-    ParceladoDetalheComponent
+    ParceladoDetalheComponent,
+    FormasPagamentoComponent,
+    FormaPagamentoListaComponent,
+    FormaPagamentoDetalheComponent,
+    EstabelecimentosComponent,
+    EstabelecimentoListaComponent,
+    EstabelecimentoDetalheComponent
   ],
   imports: [
     BrowserModule,
@@ -113,6 +130,9 @@ registerLocaleData(localePt, 'pt');
     CategoriaService,
     GastoService,
     ParceladoService,
+    ParcelaService,
+    FormaPagamentoService,
+    EstabelecimentoService,
     {
       provide: LOCALE_ID,
       useValue: 'pt'

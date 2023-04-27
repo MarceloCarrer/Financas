@@ -1,5 +1,4 @@
-﻿using Financas.Domain;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Financas.Application.Contracts;
 using System.Threading.Tasks;
 using System;

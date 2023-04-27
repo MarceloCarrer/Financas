@@ -16,29 +16,21 @@ namespace Financas.Persistence
             _context = context;
         }
         
-        //PARCELAS
-        public async Task<Parcela[]> GetAllParcelasAsync()
+        //PARCELAS        
+        public async Task<Parcela[]> GetAllParcelasByParceladoIdAsync(int parceladoId)
         {
             IQueryable<Parcela> query = _context.Parcelas;
-            query = query.AsNoTracking().OrderBy(pl => pl.Id);
-
-            return await query.ToArrayAsync();
-        }
-
-        public async Task<Parcela[]> GetAllParcelasByParceladosAsync(Parcelado ParceladoId)
-        {
-            IQueryable<Parcela> query = _context.Parcelas;
-            query = query.Where(pl => pl.ParceladoId == ParceladoId.Id) 
+            query = query.Where(pl => pl.ParceladoId == parceladoId) 
                          .AsNoTracking()
                          .OrderBy(pl => pl.Id);
 
             return await query.ToArrayAsync();
         }
 
-        public async Task<Parcela> GetParcelasByIdAsync(int id)
+        public async Task<Parcela> GetParcelaByIdsAsync(int parceladoId, int parcelaId)
         {
             IQueryable<Parcela> query = _context.Parcelas;
-            query = query.Where(pl => pl.Id == id)
+            query = query.Where(pl => pl.ParceladoId == parceladoId && pl.Id == parcelaId)
                          .AsNoTracking()
                          .OrderBy(pl => pl.Id);
 

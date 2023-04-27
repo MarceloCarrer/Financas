@@ -37,6 +37,188 @@ namespace Financas.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categorias");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Mercado"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Farmácia"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Vestuário"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Eletrodoméstico"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Veículo"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Construção"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Cozinha"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Transporte"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Cama/Banho"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Academia"
+                        });
+                });
+
+            modelBuilder.Entity("Financas.Domain.Estabelecimento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Bairro")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("CEP")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Cidade")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Endereco")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("Foto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<int>("Numero")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Observacao")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UF")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Estabelecimentos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Bairro = "Ipanema",
+                            CEP = 91770001,
+                            Cidade = "Porto Alegre",
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Endereco = "Av. Juca Batista",
+                            Foto = "image1.png",
+                            Nome = "Zafari",
+                            Numero = 925,
+                            UF = "RS"
+                        });
+                });
+
+            modelBuilder.Entity("Financas.Domain.FormaPagamento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DataCadastro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FormaPagamentos");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Cartão de Crédito"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Cartão de Débito"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Cartão Alimentação"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Dinheiro"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DataCadastro = new DateTime(2023, 4, 26, 0, 0, 0, 0, DateTimeKind.Local),
+                            Nome = "Pix"
+                        });
                 });
 
             modelBuilder.Entity("Financas.Domain.Gasto", b =>
@@ -51,6 +233,12 @@ namespace Financas.Persistence.Migrations
 
                     b.Property<DateTime>("DataCompra")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("EstabelecimentoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FormaPagamentoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Local")
                         .IsRequired()
@@ -68,6 +256,10 @@ namespace Financas.Persistence.Migrations
 
                     b.HasIndex("CategoriaId");
 
+                    b.HasIndex("EstabelecimentoId");
+
+                    b.HasIndex("FormaPagamentoId");
+
                     b.ToTable("Gastos");
                 });
 
@@ -78,10 +270,16 @@ namespace Financas.Persistence.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<DateTime?>("DataPagamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("DataVencimento")
+                        .HasColumnType("datetime2");
+
                     b.Property<int>("NumeroParcela")
                         .HasColumnType("int");
 
-                    b.Property<bool>("Pago")
+                    b.Property<bool?>("Pago")
                         .HasColumnType("bit");
 
                     b.Property<int>("ParceladoId")
@@ -113,6 +311,15 @@ namespace Financas.Persistence.Migrations
                     b.Property<DateTime>("DataCompra")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("DataVencimento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("EstabelecimentoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FormaPagamentoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -132,6 +339,10 @@ namespace Financas.Persistence.Migrations
 
                     b.HasIndex("CategoriaId");
 
+                    b.HasIndex("EstabelecimentoId");
+
+                    b.HasIndex("FormaPagamentoId");
+
                     b.ToTable("Parcelados");
                 });
 
@@ -143,7 +354,23 @@ namespace Financas.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Financas.Domain.Estabelecimento", "Estabelecimentos")
+                        .WithMany("Gastos")
+                        .HasForeignKey("EstabelecimentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Financas.Domain.FormaPagamento", "FormaPagamentos")
+                        .WithMany("Gastos")
+                        .HasForeignKey("FormaPagamentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Categorias");
+
+                    b.Navigation("Estabelecimentos");
+
+                    b.Navigation("FormaPagamentos");
                 });
 
             modelBuilder.Entity("Financas.Domain.Parcela", b =>
@@ -165,10 +392,40 @@ namespace Financas.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("Financas.Domain.Estabelecimento", "Estabelecimentos")
+                        .WithMany("Parcelados")
+                        .HasForeignKey("EstabelecimentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Financas.Domain.FormaPagamento", "FormaPagamentos")
+                        .WithMany("Parcelados")
+                        .HasForeignKey("FormaPagamentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Categorias");
+
+                    b.Navigation("Estabelecimentos");
+
+                    b.Navigation("FormaPagamentos");
                 });
 
             modelBuilder.Entity("Financas.Domain.Categoria", b =>
+                {
+                    b.Navigation("Gastos");
+
+                    b.Navigation("Parcelados");
+                });
+
+            modelBuilder.Entity("Financas.Domain.Estabelecimento", b =>
+                {
+                    b.Navigation("Gastos");
+
+                    b.Navigation("Parcelados");
+                });
+
+            modelBuilder.Entity("Financas.Domain.FormaPagamento", b =>
                 {
                     b.Navigation("Gastos");
 
